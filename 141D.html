@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>141d</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        //MODEL
+            let firstName = '';
+            let emailAdress = '';
+
+        //VIEW
+            updateView('input');
+
+            function updateView(currentPage){
+                document.getElementById('app').innerHTML = showCorrectPage(currentPage);
+            }
+        
+        //CONTROLLER
+            function showCorrectPage(currentPage){
+                if(currentPage == 'input'){
+                    return /*HTML*/`
+                        <div>Fornavn:</div>
+                        <input type="tekst" onchange="(firstName=this.value)" value="${firstName}"/><br>
+                        <div>Email:</div>
+                        <input type="tekst" onchange="(emailAdress=this.value)" value="${emailAdress}"/><br>
+                        <button onclick="updateView('info')">Registrer</button>
+                    `;
+                }
+                else if(currentPage == 'info'){
+                    return /*HTML*/`
+                        <div>Fornavn:</div>
+                        <div>${firstName}</div>
+                        <div>Email:</div>
+                        <div>${emailAdress}</div>
+                        <button onclick="updateView('input')">Rediger</button>
+                    `;
+                }
+            }
+
+
+    </script>
+</body>
+</html>

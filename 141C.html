@@ -6,9 +6,13 @@
     <title>141c</title>
     <style>
         .createdDiv{
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             border: 2px solid black;
+            margin: 3px;
+            display: flex;
+            align-items: center;
+            padding: 4px;
         }
     </style>
 </head>
@@ -16,11 +20,11 @@
     <div id="app"></div>
 
     <script>
-        //MODEL
+    //MODEL
         let backgroundColor = '';
         let foregroudColor = '';
 
-        //VIEW
+    //VIEW
         updateView()
         function updateView(){
             document.getElementById('app').innerHTML = /*HTML*/`
@@ -49,23 +53,19 @@
         function addDiv(){
             if(backgroundColor != '' && foregroudColor != ''){
                 document.getElementById('app').innerHTML += /*HTML*/`
-                <div style="background-color: ${backgroundColor}; color: ${foregroudColor}; width: 100px; height: 100px;"></div>
+                <div class="createdDiv" style="background-color: ${backgroundColor}; color: ${foregroudColor};">You added a div with a ${backgroundColor} background and ${foregroudColor} text</div>
                 `;
             }
-            
-            console.log(createdDiv)
-            updateView();
         }
 
+    //CONTROLLER
         function changeBackgroundColor(color){
             backgroundColor = color;
         }
-
+        
         function changeForegroundColor(color){
             foregroudColor = color;
         }
-
-        //CONTROLLER
-    </script>
+        </script>
 </body>
 </html>
