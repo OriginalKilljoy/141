@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>141a</title>
+    <style>
+        #smileyFace{
+            height: 100px;
+            width: 100px;
+            font-size: 400%;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        //MODEL
+        let points = 0;
+        let pointsPerClick = 1;
+        let smileyIndex = 0;
+
+        //VIEW
+
+        updateView();
+        function updateView(){
+            let smiley = smileyIndex == 0 ? '😀' : '😄';
+            document.getElementById('app').innerHTML = /*HTML*/`
+                <div id="smileyFace" onclick="clickSmiley()">${smiley}</div>
+                <div id="pointsInfo">${points}</div>
+                <button onclick="buyUpgrade()">Kjøp oppgradering (10 poeng)</button>
+                <button onclick="cheatUpgrade()">Juks;)</button>
+            `;
+        }
+
+        //CONTROLLER
+
+        function clickSmiley(){
+            points += pointsPerClick;
+            smileyIndex = 1 - smileyIndex;
+            updateView();
+        }
+
+        function buyUpgrade(){
+            if(points < 10) return;
+            points -= 10;
+            pointsPerClick++;
+            updateView();
+        }
+
+        function cheatUpgrade(){
+            points *= 10;
+            pointsPerClick *= 10;
+            updateView();
+        }
+    </script>
+</body>
+</html>
